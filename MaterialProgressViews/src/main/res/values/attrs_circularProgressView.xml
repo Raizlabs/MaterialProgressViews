@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircularProgressView">
+        <attr name="circularProgressViewLineColor" format="color"/>
+        <attr name="circularProgressViewLineThickness" format="dimension"/>
+        <attr name="circularProgressViewFastSpeed" format="float"/>
+        <attr name="circularProgressViewSlowSpeed" format="float"/>
+        <attr name="circularProgressViewSwapAngle" format="float"/>
+    </declare-styleable>
+
+    <color name="CircularProgressView.Defaults.LineColor">#3173FF</color>
+    <dimen name="CircularProgressView.Defaults.LineThickness">10dp</dimen>
+    <integer name="CircularProgressView.Defaults.FastSpeed">540</integer>
+    <integer name="CircularProgressView.Defaults.SlowSpeed">200</integer>
+    <integer name="CircularProgressView.Defaults.SwapAngle">270</integer>
+</resources>
