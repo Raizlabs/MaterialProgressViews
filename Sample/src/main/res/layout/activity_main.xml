@@ -14,5 +14,6 @@
         android:id="@+id/loading"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:padding="10dp"
         android:layout_gravity="center"/>
 </FrameLayout>

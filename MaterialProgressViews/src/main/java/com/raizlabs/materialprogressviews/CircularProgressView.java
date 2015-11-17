@@ -68,16 +68,31 @@ public class CircularProgressView extends View {
 
         endcapPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        setLineColorResource(R.color.CircularProgressView_Defaults_LineColor);
-        setLineThickness(getResources().getDimensionPixelSize(R.dimen.CircularProgressView_Defaults_LineThickness));
 
-        setSweepAngle1(0);
-        setSweepAngle2(0);
+        if (!isInEditMode()) {
+            setSweepAngle1(0);
+            setSweepAngle2(0);
 
-        setFastSpeed(getResources().getInteger(R.integer.CircularProgressView_Defaults_FastSpeed));
-        setSlowSpeed(getResources().getInteger(R.integer.CircularProgressView_Defaults_SlowSpeed));
+            setLineColorResource(R.color.CircularProgressView_Defaults_LineColor);
+            setLineThickness(getResources().getDimensionPixelSize(R.dimen.CircularProgressView_Defaults_LineThickness));
 
-        setSwapAngle(getResources().getInteger(R.integer.CircularProgressView_Defaults_SwapAngle));
+            setFastSpeed(getResources().getInteger(R.integer.CircularProgressView_Defaults_FastSpeed));
+            setSlowSpeed(getResources().getInteger(R.integer.CircularProgressView_Defaults_SlowSpeed));
+
+            setSwapAngle(getResources().getInteger(R.integer.CircularProgressView_Defaults_SwapAngle));
+        } else {
+
+            setSweepAngle1(0);
+            setSweepAngle2(270);
+
+            setLineColor(Color.BLUE);
+            setLineThickness(20);
+
+            setFastSpeed(500);
+            setSlowSpeed(200);
+
+            setSwapAngle(270);
+        }
 
         updateCircleRect();
     }
@@ -119,6 +134,7 @@ public class CircularProgressView extends View {
 
     /**
      * Sets the speed of the faster head.
+     *
      * @param speed The speed in degrees per second.
      */
     public void setFastSpeed(float speed) {
@@ -127,6 +143,7 @@ public class CircularProgressView extends View {
 
     /**
      * Sets the speed of the slower head.
+     *
      * @param speed The speed in degrees per second.
      */
     public void setSlowSpeed(float speed) {
@@ -135,6 +152,7 @@ public class CircularProgressView extends View {
 
     /**
      * Sets the max angle between the two heads before a swap happens.
+     *
      * @param swapAngle The angle between the two heads before a swap happens. In degrees.
      */
     public void setSwapAngle(float swapAngle) {
@@ -143,6 +161,7 @@ public class CircularProgressView extends View {
 
     /**
      * Sets the color of the line.
+     *
      * @param color The color of the line.
      */
     public void setLineColor(int color) {
@@ -152,6 +171,7 @@ public class CircularProgressView extends View {
 
     /**
      * Sets the color of the line from resources.
+     *
      * @param colorResId The resource of id of the color to use for the line.
      */
     @SuppressWarnings("deprecation")
@@ -165,6 +185,7 @@ public class CircularProgressView extends View {
 
     /**
      * Sets the thickness of the line.
+     *
      * @param thickness The thickness of the line in pixels.
      */
     public void setLineThickness(int thickness) {
@@ -175,6 +196,7 @@ public class CircularProgressView extends View {
 
     /**
      * Sets the current position of the first head.
+     *
      * @param angle The angle of the first head in degrees.
      */
     public void setSweepAngle1(int angle) {
@@ -184,6 +206,7 @@ public class CircularProgressView extends View {
 
     /**
      * Sets the current position of the second head.
+     *
      * @param angle The angle of the second head in degrees.
      */
     public void setSweepAngle2(int angle) {
@@ -238,9 +261,9 @@ public class CircularProgressView extends View {
 
     private void updateCircleRect() {
         final int halfThickness = lineThickness / 2;
-        circleRect.left = halfThickness + 1;
-        circleRect.top = halfThickness + 1;
-        circleRect.right = getWidth() - halfThickness - 1;
-        circleRect.bottom = getHeight() - halfThickness - 1;
+        circleRect.left = halfThickness + 1 + getPaddingLeft();
+        circleRect.top = halfThickness + 1 + getPaddingTop();
+        circleRect.right = getWidth() - halfThickness - 1 - getPaddingRight();
+        circleRect.bottom = getHeight() - halfThickness - 1 - getPaddingBottom();
     }
 }
