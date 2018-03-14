@@ -229,34 +229,13 @@ public class CircularProgressView extends View {
         final int sweep1Target = (int) (sweepAngle1 + ((isAngle1Fast ? fastSpeed : slowSpeed) * timeUntilSwap));
         final int sweep2Target = (int) (sweepAngle2 + ((isAngle1Fast ? slowSpeed : fastSpeed) * timeUntilSwap));
 
-        AnimatorSet set = new AnimatorSet();
-        set.play(ObjectAnimator.ofInt(this, "sweepAngle1", sweepAngle1, sweep1Target))
-                .with(ObjectAnimator.ofInt(this, "sweepAngle2", sweepAngle2, sweep2Target));
-        set.setDuration((long) (timeUntilSwap * 1000));
-        set.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
+        ObjectAnimator animator = ObjectAnimator.ofInt(this, "sweepAngle1", sweepAngle1, sweep1Target))
+                .with(ObjectAnimator.ofInt(this, "sweepAngle2", sweepAngle2, sweep2Target);
+        animator.setDuration((long) (timeUntilSwap * 1000));
+        //animator.set
 
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                animateContinuous();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-        });
-
-        set.setInterpolator(new LinearInterpolator());
-        set.start();
+        animator.setInterpolator(new LinearInterpolator());
+        animator.start();
     }
 
     private void updateCircleRect() {
